@@ -20,11 +20,12 @@ public class RazeniEpizod {
      */
     public static void main(String[] args) {
         // úvodní vstup
-        List<String> seznamEpizod = Arrays.asList("Serial S01E06", "Serial S01E02", "Serial S01E03",
-                "Serial S01E05", "Serial S01E01", "Serial S01E04");
+        List<String> seznamEpizod = Arrays.asList("1x04", "02x10", "02x4", "5x8");
 
         // seřazení listu pomocí 1 streamu
         List<String> serazenySeznam = seznamEpizod.stream().filter(string -> !string.isEmpty())
+                .map(string -> string.startsWith("0") ? string : "0" + string)
+                // .map(string -> string.charAt(3) > '1'  ? string : string)
                 .sorted().collect(Collectors.toList());
         serazenySeznam.forEach(System.out::println);
         //seznamEpizod.stream().filter(string -> !string.isEmpty()).sorted().forEach(System.out::println);
