@@ -22,10 +22,10 @@ public class RazeniEpizod {
         // úvodní vstup
         List<String> seznamEpizod = Arrays.asList("1x04", "02x10", "02x4", "5x8");
 
-        // seřazení listu pomocí 1 streamu
+        // seřazení listu pomocí 1 streamu (předp. -> seriál nemá více jak 9 sérií)
         List<String> serazenySeznam = seznamEpizod.stream().filter(string -> !string.isEmpty())
                 .map(string -> string.startsWith("0") ? string : "0" + string)
-                // .map(string -> string.charAt(3) > '1'  ? string : string)
+                .map(string -> string.length() <5 ? string.replaceAll("x", "x0") : string)
                 .sorted().collect(Collectors.toList());
         serazenySeznam.forEach(System.out::println);
         //seznamEpizod.stream().filter(string -> !string.isEmpty()).sorted().forEach(System.out::println);
